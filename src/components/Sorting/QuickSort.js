@@ -3,7 +3,7 @@ let heights = new Map();
 // color for separating elements
 const color = ["blue", "green", "lightBlue", "yellow"];
 // color for merging elements
-const mergeColor = ["violet", "greenyellow", "orange"];
+// const mergeColor = ["violet", "greenyellow", "orange"];
 
 // sleep function to pause the execution of the code
 function sleep() {
