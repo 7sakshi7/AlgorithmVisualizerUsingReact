@@ -14,7 +14,7 @@ const ShortestPathTemplate = (props) => {
       dst = -1;
     // countSteps = 0;
 
-    let arr = [];
+    // let arr = [];
     for (let i = 0; i < 407; i++) {
       const cells = document.createElement("div");
       cells.classList.add("block");

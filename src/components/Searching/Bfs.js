@@ -8,7 +8,7 @@ function sleep() {
 // Algorithm
 export default async function findPathBfs(sx, sy, dx, dy) {
   arr.push([sx, sy]);
-  let found = 0;
+  // let found = 0;
   while (Array.isArray(arr) && arr.length) {
     let sz = arr.length;
     while (sz--) {
@@ -24,11 +24,14 @@ export default async function findPathBfs(sx, sy, dx, dy) {
           ycord <= 0 ||
           xcord > 14 ||
           ycord > 38 ||
-          (xcord - 1) * 38 + ycord > 532 ||
+          (xcord - 1) * 38 + ycord >= 532 ||
           getComputedStyle(cells[(xcord - 1) * 38 + ycord]).backgroundColor !==
             "rgb(255, 255, 255)"
-        ) continue;
-
+        ) {
+          if (xcord === dx && ycord === dy) {
+            if ((xcord - 1) * 38 + ycord > 532) continue;
+          } else continue;
+        }
         if (xcord === dx && ycord === dy) {
           cells[(xcord - 1) * 38 + ycord - 1].style.backgroundColor = "#adff2f";
           console.log("found");

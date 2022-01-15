@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./searchingTemplate.css";
 import findPathBfs from "./Searching/Bfs";
 import findPathDfs from "./Searching/Dfs";
 import startVisualization from "./Searching/ShortestPath";
 
 const SearchingTemplate = (props) => {
-  React.useEffect(() => {
+  useEffect((id = props.id) => {
     const container = document.querySelector(".containers");
     const source = document.querySelector(".source");
     const dest = document.querySelector(".dest");
     const blocked = document.querySelector(".blocked");
     const submit = document.querySelector(".submit");
+    
     let blk = 0,
       src = -1,
-      dst = -1,
-      countSteps = 0;
+      dst = -1;
+    // countSteps = 0;
 
-    let arr = [];
+    // let arr = [];
     for (let i = 0; i < 531; i++) {
       const cells = document.createElement("div");
       cells.classList.add("cells");
@@ -27,13 +28,13 @@ const SearchingTemplate = (props) => {
 
     source.addEventListener("click", () => {
       container.removeEventListener("mouseover", color);
-      if (src == -1) src = 0;
+      if (src === -1) src = 0;
       else alert("Source already choosen");
       blk = 0;
     });
     dest.addEventListener("click", () => {
       container.removeEventListener("mouseover", color);
-      if (dst == -1) dst = 0;
+      if (dst === -1) dst = 0;
       else alert("Source already choosen");
       blk = 0;
     });
@@ -41,7 +42,9 @@ const SearchingTemplate = (props) => {
       container.addEventListener("mouseover", color);
       blk = 1;
     });
-    submit.addEventListener("click", findCoords);
+    submit.addEventListener("click", ()=>{
+      findCoords(id)
+    });
 
     container.addEventListener("click", color);
 
@@ -65,7 +68,7 @@ const SearchingTemplate = (props) => {
     }
 
     // finding source and destination coords
-    function findCoords() {
+    function findCoords(id) {
       const cells = document.querySelectorAll(".cells");
       let c = 0;
       let sx = -1,
@@ -75,13 +78,13 @@ const SearchingTemplate = (props) => {
       for (let i = 1; i <= 14; i++) {
         for (let j = 1; j <= 38; j++) {
           if (
-            getComputedStyle(cells[c]).backgroundColor == "rgb(255, 127, 80)"
+            getComputedStyle(cells[c]).backgroundColor === "rgb(255, 127, 80)"
           ) {
             sx = i;
             sy = j;
             console.log(sx, sy, c);
           } else if (
-            getComputedStyle(cells[c]).backgroundColor == "rgb(255, 20, 147)"
+            getComputedStyle(cells[c]).backgroundColor === "rgb(255, 20, 147)"
           ) {
             dx = i;
             dy = j;
@@ -90,15 +93,15 @@ const SearchingTemplate = (props) => {
           c++;
         }
       }
-      if (sx == -1 || sy == -1 || dx == -1 || dy == -1) {
+      if (sx === -1 || sy === -1 || dx === -1 || dy === -1) {
         alert("Select Both Source And Destination");
         return;
       }
-      if (Number(props.id) === 7) findPathBfs(sx, sy, dx, dy);
-      else if(Number(props.id) === 8)findPathDfs(sx, sy, dx, dy);
-      else startVisualization(sx,sy,dx,dy);
+      if (Number(id) === 7) findPathBfs(sx, sy, dx, dy);
+      else if (Number(id) === 8) findPathDfs(sx, sy, dx, dy);
+      else startVisualization(sx, sy, dx, dy);
     }
-  }, []);
+  }, [props.id]);
 
   return (
     <div className="top-container">
@@ -106,7 +109,7 @@ const SearchingTemplate = (props) => {
       <button className="btn dest">Click To Select Destination Cell</button>
       <button className="btn blocked">Click To Create Blocked Cell</button>
       <button className="btn submit">Submit</button>
-      <button className="btn reset" >Reset</button>
+      <button className="btn reset">Reset</button>
       <div className="containers">
         <div className="cells">0</div>
       </div>

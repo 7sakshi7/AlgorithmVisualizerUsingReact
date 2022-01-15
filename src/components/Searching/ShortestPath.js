@@ -77,7 +77,7 @@ function heuristic(x, y, dx, dy) {
 }
 
 function updateNeighbours(x, y) {
-  neighbours[(x - 1) * 34 + y] = new Array();
+  neighbours[(x - 1) * 34 + y] = [];
   if (x - 1 >= 1 && y >= 1 && x - 1 <= 12 && y <= 34) {
     const cells = document.querySelectorAll(".block");
     const color = getComputedStyle(cells[(x - 2) * 34 + y]).backgroundColor;
