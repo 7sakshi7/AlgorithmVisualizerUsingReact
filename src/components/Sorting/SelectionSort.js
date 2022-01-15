@@ -41,7 +41,7 @@ export default async function sortElementSelection(array) {
                 childArray[j].style.color = "black";
             }
         }
-        if (min != i) {
+        if (min !== i) {
             const temp = array[i];
             const tempStyle = getComputedStyle(childArray[i]).height;
             childArray[i].style.height = getComputedStyle(childArray[min]).height;

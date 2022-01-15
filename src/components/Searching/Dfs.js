@@ -8,7 +8,7 @@ function sleep() {
 // Algorithm
 export default async function findPathDfs(sx, sy, dx, dy) {
   arr.push([sx, sy]);
-  let found = 0;
+  // let found = 0;
   while (Array.isArray(arr) && arr.length) {
     let sz = arr.length;
     while (sz--) {
@@ -24,15 +24,15 @@ export default async function findPathDfs(sx, sy, dx, dy) {
           xcord > 14 ||
           ycord > 38 ||
           (xcord - 1) * 38 + ycord >= 532 ||
-          getComputedStyle(cells[(xcord - 1) * 38 + ycord]).backgroundColor !=
+          getComputedStyle(cells[(xcord - 1) * 38 + ycord]).backgroundColor !==
             "rgb(255, 255, 255)"
         ) {
-          if (xcord == dx && ycord == dy) {
-            (xcord - 1) * 38 + ycord == 532;
+          if (xcord === dx && ycord === dy) {
+            if ((xcord - 1) * 38 + ycord > 532) continue;
           } else continue;
         }
 
-        if (xcord == dx && ycord == dy) {
+        if (xcord === dx && ycord === dy) {
           cells[(xcord - 1) * 38 + ycord - 1].style.backgroundColor = "#adff2f";
           console.log("found");
           return;

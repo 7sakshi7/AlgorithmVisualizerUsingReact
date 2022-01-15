@@ -2,11 +2,11 @@ import React from "react";
 
 const ExactlyFourOnes = () => {
   const [elements, setElements] = React.useState("");
-  const symbol = document.querySelector(".input-group");
+  // const symbol = document.querySelector(".input-group");
   const states = document.querySelectorAll(".circle");
   const transition = document.querySelectorAll(".transition");
   const self_loop = document.querySelectorAll(".self-loop");
-  const back_transition = document.querySelectorAll(".back-transition");
+  // const back_transition = document.querySelectorAll(".back-transition");
   // console.log(transition);
   function sleep() {
     return new Promise((resolve) => setTimeout(resolve, 1500));
@@ -23,35 +23,35 @@ const ExactlyFourOnes = () => {
       ].style.backgroundColor = "#4facfe";
       // console.log(alphabet.textContent,typeof(alphabet.textContent),currState);
       if (alphabet.textContent === "0") {
-        if (currState == 0) {
+        if (currState === 0) {
           self_loop[0].style.borderColor = "#4facfe";
           states[0].style.backgroundColor = "#16141c";
           await wait();
 
           self_loop[0].style.borderColor = "white";
           states[0].style.backgroundColor = "#4facfe";
-        } else if (currState == 1) {
+        } else if (currState === 1) {
           self_loop[1].style.borderColor = "#4facfe";
           states[1].style.backgroundColor = "#16141c";
           await wait();
 
           self_loop[1].style.borderColor = "white";
           states[1].style.backgroundColor = "#4facfe";
-        } else if (currState == 2) {
+        } else if (currState === 2) {
           self_loop[2].style.borderColor = "#4facfe";
           states[2].style.backgroundColor = "#16141c";
           await wait();
 
           self_loop[2].style.borderColor = "white";
           states[2].style.backgroundColor = "#4facfe";
-        } else if (currState == 3) {
+        } else if (currState === 3) {
           self_loop[3].style.borderColor = "#4facfe";
           states[3].style.backgroundColor = "#16141c";
           await wait();
 
           self_loop[3].style.borderColor = "white";
           states[3].style.backgroundColor = "#4facfe";
-        } else if (currState == 4) {
+        } else if (currState === 4) {
           self_loop[4].style.borderColor = "#4facfe";
           states[4].style.backgroundColor = "#16141c";
           await wait();
@@ -67,7 +67,7 @@ const ExactlyFourOnes = () => {
           states[6].style.backgroundColor = "#4facfe";
         }
       } else if (alphabet.textContent === "1"){
-        if (currState == 0) {
+        if (currState === 0) {
           currState = 1;
           states[0].style.backgroundColor = "#16141c";
           transition[1].style.backgroundColor = "#4facfe";
@@ -75,7 +75,7 @@ const ExactlyFourOnes = () => {
           await wait();
           transition[1].style.backgroundColor = "white";
           states[1].style.backgroundColor = "#4facfe";
-        } else if (currState == 1) {
+        } else if (currState === 1) {
           currState = 2;
           states[1].style.backgroundColor = "#16141c";
           transition[2].style.backgroundColor = "#4facfe";
@@ -83,7 +83,7 @@ const ExactlyFourOnes = () => {
           await wait();
           transition[2].style.backgroundColor = "white";
           states[2].style.backgroundColor = "#4facfe";
-        } else if (currState == 2) {
+        } else if (currState === 2) {
           currState = 3;
           states[2].style.backgroundColor = "#16141c";
           transition[3].style.backgroundColor = "#4facfe";
@@ -91,7 +91,7 @@ const ExactlyFourOnes = () => {
           await wait();
           transition[3].style.backgroundColor = "white";
           states[3].style.backgroundColor = "#4facfe";
-        } else if (currState == 3) {
+        } else if (currState === 3) {
           currState = 4;
           states[3].style.backgroundColor = "#16141c";
           transition[4].style.backgroundColor = "#4facfe";
@@ -99,7 +99,7 @@ const ExactlyFourOnes = () => {
           await wait();
           transition[4].style.backgroundColor = "white";
           states[4].style.backgroundColor = "#4facfe";
-        } else if (currState == 4) {
+        } else if (currState === 4) {
           currState = 6;
           states[4].style.backgroundColor = "#16141c";
           console.log(transition[5]);
@@ -123,7 +123,7 @@ const ExactlyFourOnes = () => {
     symbols.forEach((_, index) => {
       symbols[index].style.backgroundColor = "slateblue";
     });
-    if (currState == 4) alert("String is accepted");
+    if (currState === 4) alert("String is accepted");
     else alert("String is rejected");
 
     setElements("");

@@ -28,7 +28,7 @@ export default async function BinaryElementSearch(
     await sleep();
     childArray[mid].style.backgroundColor = "yellow";
     childArray[mid].style.color = "white";
-    if (array[mid] == Number(searchedNumber)) {
+    if (array[mid] === Number(searchedNumber)) {
       childArray[mid].style.backgroundColor = "black";
       await sleep();
 
@@ -50,7 +50,7 @@ export default async function BinaryElementSearch(
       high = mid - 1;
     } else if (array[mid] < Number(searchedNumber)) low = mid + 1;
   }
-  if (found == 0) {
+  if (found === 0) {
     if (window.innerWidth > 681) {
       setHeaderText(`Number ${searchedNumber} not found `);
       setTimeout(() => {

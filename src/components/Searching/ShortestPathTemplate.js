@@ -12,7 +12,7 @@ const ShortestPathTemplate = (props) => {
     let blk = 0,
       src = -1,
       dst = -1;
-      // countSteps = 0;
+    // countSteps = 0;
 
     let arr = [];
     for (let i = 0; i < 407; i++) {
@@ -24,8 +24,9 @@ const ShortestPathTemplate = (props) => {
 
     source.addEventListener("click", () => {
       container.removeEventListener("mouseover", color);
-      if (src === -1) src = 0;
-      else alert("Source already choosen");
+      if (src === -1) {
+        src = 0;
+      } else alert("Source already choosen");
       blk = 0;
     });
     dest.addEventListener("click", () => {
@@ -91,7 +92,7 @@ const ShortestPathTemplate = (props) => {
         alert("Select Both Source And Destination");
         return;
       }
-       startVisualization(sx,sy,dx,dy);
+      startVisualization(sx, sy, dx, dy);
     }
   }, []);
 

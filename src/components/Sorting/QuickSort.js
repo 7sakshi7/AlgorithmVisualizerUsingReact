@@ -82,7 +82,7 @@ async function partition(l, r, array, setHeaderText, headerText) {
         "Checking first greater element than pivot from left side..-----> "
       );
       low++;
-      if (array[low] != pivot) {
+      if (array[low] !== pivot) {
         childArray[low].style.backgroundColor = "coral";
         let text = headerText;
         text += `Checking whether ${array[low]} is greater than pivot ${pivot}?`;
@@ -98,7 +98,7 @@ async function partition(l, r, array, setHeaderText, headerText) {
         "Checking first smaller element than pivot from right side..-----> "
       );
       high--;
-      if (array[high] != pivot) {
+      if (array[high] !== pivot) {
         childArray[high].style.backgroundColor = "deeppink";
         let text = headerText;
         text += `Checking whether ${array[high]} is smaller than pivot ${pivot}?`;
@@ -136,7 +136,7 @@ async function partition(l, r, array, setHeaderText, headerText) {
       childArray[low].style.backgroundColor = prevColor;
       childArray[high].style.backgroundColor = prevColor;
 
-      if (array[high] == pivot) {
+      if (array[high] === pivot) {
         childArray[high].style.backgroundColor = "darkorange";
       }
     }

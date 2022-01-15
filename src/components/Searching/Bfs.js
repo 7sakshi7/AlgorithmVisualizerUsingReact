@@ -24,14 +24,10 @@ export default async function findPathBfs(sx, sy, dx, dy) {
           ycord <= 0 ||
           xcord > 14 ||
           ycord > 38 ||
-          (xcord - 1) * 38 + ycord >= 532 ||
+          (xcord - 1) * 38 + ycord > 532 ||
           getComputedStyle(cells[(xcord - 1) * 38 + ycord]).backgroundColor !==
             "rgb(255, 255, 255)"
-        ) {
-          if (xcord === dx && ycord === dy) {
-            (xcord - 1) * 38 + ycord === 532;
-          } else continue;
-        }
+        ) continue;
 
         if (xcord === dx && ycord === dy) {
           cells[(xcord - 1) * 38 + ycord - 1].style.backgroundColor = "#adff2f";
