@@ -3,8 +3,8 @@ import "./endingwithab.css";
 
 const Even0Odd1 = () => {
   const [elements, setElements] = React.useState("");
-  // const symbol = document.querySelector(".input-group");
-  const states = document.querySelectorAll(".circle");
+  // const symbol = document.querySelector(".input-group_automata");
+  const states = document.querySelectorAll(".state_circle");
   const transition = document.querySelectorAll(".transition");
   const back_transition = document.querySelectorAll(".back-transition");
 
@@ -18,7 +18,7 @@ const Even0Odd1 = () => {
   let currState = 0;
   async function showSimulation(symbols) {
     for (const [index, alphabet] of symbols.entries()) {
-      document.querySelectorAll(".input-group span")[
+      document.querySelectorAll(".input-group_automata span")[
         index
       ].style.backgroundColor = "#4facfe";
       if (alphabet.textContent === "0") {
@@ -104,11 +104,11 @@ const Even0Odd1 = () => {
 
     setElements("");
     states[currState].style.backgroundColor = "#16141c";
-    const spanChild = document.querySelectorAll(".input-group span");
+    const spanChild = document.querySelectorAll(".input-group_automata span");
     spanChild.forEach((span) => span.remove());
   }
 
-  // const btn = document.querySelector(".input-group button");
+  // const btn = document.querySelector(".input-group_automata button");
   async function showElements() {
     const elements = document.querySelector(".input-field").value;
     const inputString = elements.split(" ");
@@ -117,17 +117,17 @@ const Even0Odd1 = () => {
       const span = document.createElement("span");
       span.textContent = ele;
       console.log(span);
-      document.querySelector(".input-group").appendChild(span);
+      document.querySelector(".input-group_automata").appendChild(span);
     });
     states[0].style.backgroundColor = "#4facfe";
     await sleep();
-    const symbols = document.querySelectorAll(".input-group span");
+    const symbols = document.querySelectorAll(".input-group_automata span");
     showSimulation(symbols);
   }
 
   return (
-    <>
-      <div className="container">
+    <div className="body_box">
+      <div className="container_for_visualization">
         {/* <!-- initial transition --> */}
         <div className="transition">
           <span
@@ -136,7 +136,7 @@ const Even0Odd1 = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -146,7 +146,7 @@ const Even0Odd1 = () => {
 
         {/* <!-- initial state --> */}
 
-        <div className="initial circle state">q0</div>
+        <div className="initial state_circle state">q0</div>
 
         {/* <!-- transiion to q1 --> */}
 
@@ -158,7 +158,7 @@ const Even0Odd1 = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -173,7 +173,7 @@ const Even0Odd1 = () => {
         </div>
 
         {/* <!-- q1 state --> */}
-        <div className="intermmediate circle state">q1</div>
+        <div className="intermmediate state_circle state">q1</div>
 
         {/* <!-- transition to q2 --> */}
 
@@ -185,7 +185,7 @@ const Even0Odd1 = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -201,7 +201,7 @@ const Even0Odd1 = () => {
 
         {/* <!-- q2 state --> */}
 
-        <div className="intermmediate circle state">q2</div>
+        <div className="intermmediate state_circle state">q2</div>
 
         {/* <!-- transition to q3 --> */}
 
@@ -213,7 +213,7 @@ const Even0Odd1 = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -286,7 +286,7 @@ const Even0Odd1 = () => {
         {/* <!-- final state --> */}
 
         <div
-          className="final circle"
+          className="final state_circle"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -294,7 +294,7 @@ const Even0Odd1 = () => {
           }}
         >
           <div
-            className="final-1 circle"
+            className="final-1 state_circle"
             style={{ width: "60px", height: "60px" }}
           >
             q3
@@ -302,7 +302,7 @@ const Even0Odd1 = () => {
         </div>
       </div>
 
-      <div className="input-group">
+      <div className="input-group_automata">
         <input
           value={elements}
           onChange={(e) => setElements(e.target.value)}
@@ -312,7 +312,7 @@ const Even0Odd1 = () => {
         />
         <button onClick={showElements}>Submit</button>
       </div>
-    </>
+    </div>
   );
 };
 

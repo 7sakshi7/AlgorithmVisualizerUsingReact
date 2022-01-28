@@ -2,8 +2,8 @@ import React from "react";
 
 const ExactlyFourOnes = () => {
   const [elements, setElements] = React.useState("");
-  // const symbol = document.querySelector(".input-group");
-  const states = document.querySelectorAll(".circle");
+  // const symbol = document.querySelector(".input-group_automata");
+  const states = document.querySelectorAll(".state_circle");
   const transition = document.querySelectorAll(".transition");
   const self_loop = document.querySelectorAll(".self-loop");
   // const back_transition = document.querySelectorAll(".back-transition");
@@ -18,7 +18,7 @@ const ExactlyFourOnes = () => {
   async function showSimulation(symbols) {
     // console.log(symbols);
     for (const [index, alphabet] of symbols.entries()) {
-      document.querySelectorAll(".input-group span")[
+      document.querySelectorAll(".input-group_automata span")[
         index
       ].style.backgroundColor = "#4facfe";
       // console.log(alphabet.textContent,typeof(alphabet.textContent),currState);
@@ -128,7 +128,7 @@ const ExactlyFourOnes = () => {
 
     setElements("");
     states[currState].style.backgroundColor = "#16141c";
-    const spanChild = document.querySelectorAll(".input-group span");
+    const spanChild = document.querySelectorAll(".input-group_automata span");
     spanChild.forEach((span)=>span.remove());
 
   }
@@ -140,17 +140,17 @@ const ExactlyFourOnes = () => {
       const span = document.createElement("span");
       span.textContent = ele;
       console.log(span);
-      document.querySelector(".input-group").appendChild(span);
+      document.querySelector(".input-group_automata").appendChild(span);
     });
     states[0].style.backgroundColor = "#4facfe";
     await sleep();
-    const symbols = document.querySelectorAll(".input-group span");
+    const symbols = document.querySelectorAll(".input-group_automata span");
     showSimulation(symbols);
   }
 
   return (
-    <>
-      <div className="container">
+    <div className="body_box">
+      <div className="container_for_visualization">
         {/* <!-- initial transition --> */}
         <div className="transition">
           <span
@@ -159,7 +159,7 @@ const ExactlyFourOnes = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -169,7 +169,7 @@ const ExactlyFourOnes = () => {
 
         {/* <!-- initial state --> */}
 
-        <div className="initial circle state">q0</div>
+        <div className="initial state_circle state">q0</div>
 
         {/* <!-- self loop on initial state --> */}
         <div className="self-loop" style={{ left: "150px" }}>
@@ -196,7 +196,7 @@ const ExactlyFourOnes = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -210,7 +210,7 @@ const ExactlyFourOnes = () => {
         </div>
 
         {/* <!-- q1 state --> */}
-        <div className="intermmediate circle state">q1</div>
+        <div className="intermmediate state_circle state">q1</div>
 
         {/* <!-- self loop on q1 --> */}
         <div className="self-loop" style={{ left: "350px" }}>
@@ -237,7 +237,7 @@ const ExactlyFourOnes = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -252,7 +252,7 @@ const ExactlyFourOnes = () => {
 
         {/* <!-- q2 state --> */}
 
-        <div className="intermmediate circle state">q2</div>
+        <div className="intermmediate state_circle state">q2</div>
 
         {/* <!-- self loop on q2 --> */}
         <div className="self-loop" style={{ left: "550px" }}>
@@ -279,7 +279,7 @@ const ExactlyFourOnes = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -294,7 +294,7 @@ const ExactlyFourOnes = () => {
 
         {/* <!-- q3 state --> */}
 
-        <div className="intermmediate circle state">q3</div>
+        <div className="intermmediate state_circle state">q3</div>
 
         {/* <!-- self loop on q3 --> */}
         <div className="self-loop" style={{ left: "750px" }}>
@@ -321,7 +321,7 @@ const ExactlyFourOnes = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -336,7 +336,7 @@ const ExactlyFourOnes = () => {
         {/* <!-- final state --> */}
 
         <div
-          className="final circle"
+          className="final state_circle"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -344,7 +344,7 @@ const ExactlyFourOnes = () => {
           }}
         >
           <div
-            className="final-1 circle"
+            className="final-1 state_circle"
             style={{ width: "60px", height: "60px" }}
           >
             q4
@@ -375,7 +375,7 @@ const ExactlyFourOnes = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -388,7 +388,7 @@ const ExactlyFourOnes = () => {
           </span>
         </div>
         <div
-          className="trap circle"
+          className="trap state_circle"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -416,7 +416,7 @@ const ExactlyFourOnes = () => {
         </div>
       </div>
 
-      <div className="input-group">
+      <div className="input-group_automata">
         <input
           value={elements}
           onChange={(e) => setElements(e.target.value)}
@@ -426,7 +426,7 @@ const ExactlyFourOnes = () => {
         />
         <button onClick={showElements}>Submit</button>
       </div>
-    </>
+    </div>
   );
 };
 

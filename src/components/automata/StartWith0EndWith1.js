@@ -3,8 +3,8 @@ import "./endingwithab.css";
 
 const StartWith0EndWith1 = () => {
   const [elements, setElements] = React.useState("");
-  // const symbol = document.querySelector(".input-group");
-  const states = document.querySelectorAll(".circle");
+  // const symbol = document.querySelector(".input-group_automata");
+  const states = document.querySelectorAll(".state_circle");
   const transition = document.querySelectorAll(".transition");
   const self_loop = document.querySelectorAll(".self-loop");
   const back_transition = document.querySelectorAll(".back-transition");
@@ -19,7 +19,7 @@ const StartWith0EndWith1 = () => {
   async function showSimulation(symbols) {
     console.log(symbols);
     for (const [index, alphabet] of symbols.entries()) {
-      document.querySelectorAll(".input-group span")[
+      document.querySelectorAll(".input-group_automata span")[
         index
       ].style.backgroundColor = "#4facfe";
       console.log(alphabet.textContent, typeof alphabet.textContent, currState);
@@ -95,7 +95,7 @@ const StartWith0EndWith1 = () => {
 
     setElements("");
     states[currState].style.backgroundColor = "#16141c";
-    const spanChild = document.querySelectorAll(".input-group span");
+    const spanChild = document.querySelectorAll(".input-group_automata span");
     spanChild.forEach((span)=>span.remove());
   }
  async function showElements() {
@@ -106,17 +106,17 @@ const StartWith0EndWith1 = () => {
       const span = document.createElement("span");
       span.textContent = ele;
       console.log(span);
-      document.querySelector(".input-group").appendChild(span);
+      document.querySelector(".input-group_automata").appendChild(span);
     });
     states[0].style.backgroundColor = "#4facfe";
     await sleep();
-    const symbols = document.querySelectorAll(".input-group span");
+    const symbols = document.querySelectorAll(".input-group_automata span");
     showSimulation(symbols);
   }
 
   return (
-    <>
-      <div class="container">
+    <div className="body_box">
+      <div class="container_for_visualization">
         <div class="transition">
           <span
             style={{
@@ -124,7 +124,7 @@ const StartWith0EndWith1 = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -132,7 +132,7 @@ const StartWith0EndWith1 = () => {
           </span>
         </div>
 
-        <div class="initial circle state">q0</div>
+        <div class="initial state_circle state">q0</div>
 
         <div class="transition">
           <span
@@ -141,7 +141,7 @@ const StartWith0EndWith1 = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -154,7 +154,7 @@ const StartWith0EndWith1 = () => {
           </span>
         </div>
 
-        <div class="intermmediate circle state">q1</div>
+        <div class="intermmediate state_circle state">q1</div>
         <div class="self-loop" style={{ left: "580px" }}>
           <span
             style={{
@@ -177,7 +177,7 @@ const StartWith0EndWith1 = () => {
               fontWeight: "50px",
               position: "relative",
               right: "-72px",
-              top: "-42px",
+              top: "-38px",
               zIndex: "6",
             }}
           >
@@ -190,15 +190,15 @@ const StartWith0EndWith1 = () => {
           </span>
         </div>
 
-        <div class="back-transition" style={{ left: "625px", top: "397px" }}>
+        <div class="back-transition" style={{ left: "625px", top: "391px" }}>
           <span
             style={{
               fontSize: "60px",
               fontWeight: "50px",
               transform: "rotate(90deg)",
               position: "relative",
-              top: "10px",
-              left: "-16.7px",
+              top: "22px",
+              left: "-13px",
               zIndex: "6",
             }}
           >
@@ -217,14 +217,14 @@ const StartWith0EndWith1 = () => {
         </div>
 
         <div
-          class="final circle"
+          class="final state_circle"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <div class="final-1 circle" style={{ width: "60px", height: "60px" }}>
+          <div class="final-1 state_circle" style={{ width: "60px", height: "60px" }}>
             q2
           </div>
         </div>
@@ -250,17 +250,17 @@ const StartWith0EndWith1 = () => {
             left: "454px",
             width: "509px",
             height: "198px",
-            top: "330px",
+            top: "327px",
           }}
         >
           <span
             style={{
-              right: "-17px",
+              right: "-13.5px",
               fontSize: "60px",
               fontWeight: "50px",
               transform: " rotate(8deg)",
               position: "absolute",
-              top: "75px",
+              top: "86px",
               zIndex: "6",
             }}
           >
@@ -280,7 +280,7 @@ const StartWith0EndWith1 = () => {
         </div>
 
         <div
-          class="trap circle"
+          class="trap state_circle"
           style={{
             marginLeft: "40px",
             display: "flex",
@@ -309,7 +309,7 @@ const StartWith0EndWith1 = () => {
         </div>
       </div>
 
-      <div class="input-group">
+      <div class="input-group_automata">
         <input
           value={elements}
           onChange={(e) => setElements(e.target.value)}
@@ -319,7 +319,7 @@ const StartWith0EndWith1 = () => {
         />
         <button onClick={showElements}>Submit</button>
       </div>
-    </>
+    </div>
   );
 };
 

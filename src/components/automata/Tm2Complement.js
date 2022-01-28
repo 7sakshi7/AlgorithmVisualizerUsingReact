@@ -3,8 +3,8 @@ import "./endingwithab.css";
 
 const Tm2Complement = () => {
   const [elements, setElements] = React.useState("");
-  // const symbol = document.querySelector(".input-group");
-  const states = document.querySelectorAll(".circle");
+  // const symbol = document.querySelector(".input-group_automata");
+  const states = document.querySelectorAll(".state_circle");
   const transition = document.querySelectorAll(".transition");
   const self_loop = document.querySelectorAll(".self-loop");
   // const back_transition = document.querySelectorAll(".back-transition");
@@ -22,11 +22,11 @@ const Tm2Complement = () => {
     console.log(symbols);
     for (const [index, alphabet] of symbols.entries()) {
       if (direction) {
-        document.querySelectorAll(".input-group span")[
+        document.querySelectorAll(".input-group_automata span")[
           index
         ].style.backgroundColor = "orange";
       } else
-        document.querySelectorAll(".input-group span")[
+        document.querySelectorAll(".input-group_automata span")[
           index
         ].style.backgroundColor = "#4facfe";
       console.log(alphabet.textContent, typeof alphabet.textContent, currState);
@@ -58,7 +58,7 @@ const Tm2Complement = () => {
           self_loop[2].style.borderColor = "white";
           states[4].style.backgroundColor = "#4facfe";
 
-          document.querySelectorAll(".input-group span")[index].textContent =
+          document.querySelectorAll(".input-group_automata span")[index].textContent =
             "1";
           await wait();
         }
@@ -120,7 +120,7 @@ const Tm2Complement = () => {
           self_loop[2].style.borderColor = "white";
           states[4].style.backgroundColor = "#4facfe";
 
-          document.querySelectorAll(".input-group span")[index].textContent =
+          document.querySelectorAll(".input-group_automata span")[index].textContent =
             "0";
           await wait();
         }
@@ -131,12 +131,12 @@ const Tm2Complement = () => {
     while (index--) {
       if (index === symbols.length - 1) continue;
       if (direction) {
-        document.querySelectorAll(".input-group span")[
+        document.querySelectorAll(".input-group_automata span")[
           index
         ].style.backgroundColor = "orange";
         await wait();
       } else
-        document.querySelectorAll(".input-group span")[
+        document.querySelectorAll(".input-group_automata span")[
           index
         ].style.backgroundColor = "white";
       if (symbols[index].textContent === "0") {
@@ -167,7 +167,7 @@ const Tm2Complement = () => {
           self_loop[2].style.borderColor = "white";
           states[4].style.backgroundColor = "#4facfe";
 
-          document.querySelectorAll(".input-group span")[index].textContent =
+          document.querySelectorAll(".input-group_automata span")[index].textContent =
             "1";
           await wait();
         }
@@ -228,7 +228,7 @@ const Tm2Complement = () => {
           self_loop[2].style.borderColor = "white";
           states[4].style.backgroundColor = "#4facfe";
 
-          document.querySelectorAll(".input-group span")[index].textContent =
+          document.querySelectorAll(".input-group_automata span")[index].textContent =
             "0";
           await wait();
         }
@@ -238,7 +238,7 @@ const Tm2Complement = () => {
 
     setElements("");
     states[currState].style.backgroundColor = "#16141c";
-    const spanChild = document.querySelectorAll(".input-group span");
+    const spanChild = document.querySelectorAll(".input-group_automata span");
     spanChild.forEach((span)=>span.remove());
   }
   async function showElements() {
@@ -249,31 +249,31 @@ const Tm2Complement = () => {
     // adding blank at the begining
     const spanBeg = document.createElement("span");
     spanBeg.textContent = "#";
-    document.querySelector(".input-group").appendChild(spanBeg);
+    document.querySelector(".input-group_automata").appendChild(spanBeg);
 
     // input string
     inputString.forEach((ele) => {
       const span = document.createElement("span");
       span.textContent = ele;
       console.log(span);
-      document.querySelector(".input-group").appendChild(span);
+      document.querySelector(".input-group_automata").appendChild(span);
     });
 
     // adding blank at the end
     const spanEnd = document.createElement("span");
     spanEnd.textContent = "#";
     console.log(spanEnd);
-    document.querySelector(".input-group").appendChild(spanEnd);
+    document.querySelector(".input-group_automata").appendChild(spanEnd);
 
     states[0].style.backgroundColor = "#4facfe";
     await sleep();
-    const symbols = document.querySelectorAll(".input-group span");
+    const symbols = document.querySelectorAll(".input-group_automata span");
     showSimulation(symbols);
   }
 
   return (
-    <>
-      <div className="container">
+    <div className="body_box">
+      <div className="container_for_visualization">
         {/* <!-- initial transition --> */}
         <div className="transition">
           <span
@@ -292,7 +292,7 @@ const Tm2Complement = () => {
 
         {/* <!-- initial state --> */}
 
-        <div className="initial circle state">q0</div>
+        <div className="initial state_circle state">q0</div>
 
         {/* <!-- transition for q1 --> */}
 
@@ -323,7 +323,7 @@ const Tm2Complement = () => {
 
         {/* <!-- q1 state --> */}
 
-        <div className="intermmediate circle state">q1</div>
+        <div className="intermmediate state_circle state">q1</div>
 
         {/* <!-- transition for q2 --> */}
 
@@ -355,7 +355,7 @@ const Tm2Complement = () => {
 
         {/* <!-- q2 state --> */}
 
-        <div className="intermmediate circle state">q2</div>
+        <div className="intermmediate state_circle state">q2</div>
 
         {/* <!-- self loop for q2 --> */}
 
@@ -414,7 +414,7 @@ const Tm2Complement = () => {
         {/* <!-- q3 state --> */}
 
         <div
-          className="final circle"
+          className="final state_circle"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -480,7 +480,7 @@ const Tm2Complement = () => {
         {/* <!-- q4 state --> */}
 
         <div
-          className="trap circle"
+          className="trap state_circle"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -549,7 +549,7 @@ const Tm2Complement = () => {
         {/* <!-- halt accept --> */}
 
         <div
-          className="initial circle state"
+          className="initial state_circle state"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -561,7 +561,7 @@ const Tm2Complement = () => {
         </div>
       </div>
 
-      <div className="input-group">
+      <div className="input-group_automata">
         <input
           value={elements}
           onChange={(e) => setElements(e.target.value)}
@@ -571,7 +571,7 @@ const Tm2Complement = () => {
         />
         <button onClick={showElements}>Submit</button>
       </div>
-    </>
+    </div>
   );
 };
 

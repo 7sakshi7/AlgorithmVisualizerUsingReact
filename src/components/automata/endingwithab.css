@@ -1,16 +1,18 @@
-body {
+.body_box {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   background: #16141c;
   color: white;
 }
-#root {
+/* #root {
   width: 100vw;
   height: 100vh;
   position: relative;
-  /* overflow: hidden; */
-}
+  /* /* overflow: hidden; */
+/* }  */ 
 
-.container {
+.container_for_visualization {
   width: 85vw;
   height: 100vh;
   position: absolute;
@@ -23,12 +25,11 @@ body {
   /* justify-content: space-evenly; */
 }
 
-.input-group {
+.input-group_automata{
   top: 0;
   right: 0;
   position: absolute;
   width: 15vw;
-  /* border: 2px solid; */
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,7 +37,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
-.input-group span {
+.input-group_automata span {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -44,7 +45,7 @@ body {
   text-align: center;
   background: slateblue;
 }
-.input-group input {
+.input-group_automata input {
   /* padding: 10px 10px; */
   position: relative;
   left: -40px;
@@ -52,6 +53,7 @@ body {
   outline: 0;
   padding-left: 10px;
   height: 40px;
+  width: 100%;
   background: transparent;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.9);
   box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.4);
@@ -59,7 +61,7 @@ body {
   font-size: 18px;
 }
 
-.circle {
+.state_circle {
   height: 100px;
   width: 100px;
   border-radius: 50%;
@@ -102,8 +104,8 @@ body {
   font-weight: 50px;
   position: relative;
   right: 0px;
-  left: -50px;
-  top: -42px;z-index: 6;
+  left: -40px;
+  top: -38px;z-index: 6;
 }
 .element{
   left: -29px;

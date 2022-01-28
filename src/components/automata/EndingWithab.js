@@ -4,8 +4,8 @@ import "./endingwithab.css";
 const EndingWithab = () => {
   const [elements, setElements] = React.useState("");
 
-  // const symbol = document.querySelector(".input-group");
-  const states = document.querySelectorAll(".circle");
+  // const symbol = document.querySelector(".input-group_automata");
+  const states = document.querySelectorAll(".state_circle");
   const transition = document.querySelectorAll(".transition");
   const self_loop = document.querySelectorAll(".self-loop");
   const back_transition = document.querySelectorAll(".back-transition");
@@ -20,9 +20,9 @@ const EndingWithab = () => {
   async function showSimulation(symbols) {
     console.log(symbols);
     for (const [index, alphabet] of symbols.entries()) {
-      document.querySelectorAll(".input-group span")[
+      document.querySelectorAll(".input-group_automata span")[
         index
-      ].style.backgroundColor = "#a664f7";
+      ].style.backgroundColor ="#4facfe";
 
       if (alphabet.textContent === "a") {
         if (currState === 0) {
@@ -83,12 +83,12 @@ const EndingWithab = () => {
 
     setElements("");
     states[currState].style.backgroundColor = "#16141c";
-    const spanChild = document.querySelectorAll(".input-group span");
+    const spanChild = document.querySelectorAll(".input-group_automata span");
     spanChild.forEach((span)=>span.remove());
 
   }
 
-  // const btn = document.querySelector(".input-group button");
+  // const btn = document.querySelector(".input-group_automata button");
 
   async function showElements() {
     if (elements === ""){
@@ -101,17 +101,17 @@ const EndingWithab = () => {
       const span = document.createElement("span");
       span.textContent = ele;
       console.log(span);
-      document.querySelector(".input-group").appendChild(span);
+      document.querySelector(".input-group_automata").appendChild(span);
     });
     states[0].style.backgroundColor = "#4facfe";
     await sleep();
-    const symbols = document.querySelectorAll(".input-group span");
+    const symbols = document.querySelectorAll(".input-group_automata span");
     showSimulation(symbols);
   }
 
   return (
-    <>
-      <div className="container">
+    <div className="body_box">
+      <div className="container_for_visualization">
         <div className="transition">
           <span
             style={{
@@ -127,7 +127,7 @@ const EndingWithab = () => {
           </span>
         </div>
 
-        <div className="initial circle state">q0</div>
+        <div className="initial state_circle state">q0</div>
 
         <div className="self-loop" style={{ left: "451px" }}>
           <span
@@ -164,7 +164,7 @@ const EndingWithab = () => {
           </span>
         </div>
 
-        <div className="intermmediate circle state">q1</div>
+        <div className="intermmediate state_circle state">q1</div>
         <div className="self-loop" style={{ left: "646px" }}>
           <span
             style={{
@@ -261,7 +261,7 @@ const EndingWithab = () => {
         </div>
 
         <div
-          className="final circle"
+          className="final state_circle"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -269,7 +269,7 @@ const EndingWithab = () => {
           }}
         >
           <div
-            className="final-1 circle"
+            className="final-1 state_circle"
             style={{ width: "60px", height: "60px" }}
           >
             q2
@@ -277,7 +277,7 @@ const EndingWithab = () => {
         </div>
       </div>
 
-      <div className="input-group">
+      <div className="input-group_automata">
         <input
           onChange={(e) => setElements(e.target.value)}
           value={elements}
@@ -287,7 +287,7 @@ const EndingWithab = () => {
         />
         <button onClick={showElements}>Submit</button>
       </div>
-    </>
+    </div>
   );
 };
 
